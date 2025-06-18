@@ -1,0 +1,248 @@
+/* ========================================= */
+/* CSS Reset Básico */
+/* ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; /* Fonte padrão conforme solicitado */
+    line-height: 1.6;
+    background-color: var(--cor-fundo-claro); /* Usando a variável de cor */
+    color: var(--cor-texto-principal); /* Usando a variável de cor */
+}
+
+/* Remover sublinhado de links e definir cor */
+a {
+    text-decoration: none;
+    color: var(--cor-secundaria); /* Links com a cor secundária */
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none; /* Remover marcadores de lista */
+}
+
+/* ========================================= */
+/* Variáveis de Cores (CSS Custom Properties) */
+/* ========================================= */
+:root {
+    --cor-fundo-claro: #FDFDFD; /* Quase branco, para o fundo geral */
+    --cor-texto-principal: #333333; /* Cinza escuro para texto */
+    --cor-primaria: #4CAF50; /* Verde Esperança (para cabeçalhos, botões principais) */
+    --cor-secundaria: #2196F3; /* Azul Confiança (para links, elementos de destaque) */
+    --cor-fundo-form: #FFFFFF; /* Branco puro, mais claro que o fundo geral, para formulários */
+    --cor-borda: #CCCCCC; /* Cinza claro para bordas e divisores */
+    --cor-texto-claro: #FFFFFF; /* Texto para fundos escuros */
+}
+
+
+/* ========================================= */
+/* Estilos Gerais de Layout */
+/* ========================================= */
+.container {
+    max-width: 1100px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o container na tela */
+    padding: 0 20px; /* Padding nas laterais para telas menores */
+}
+
+/* ========================================= */
+/* Header (com ajuste para a logo) */
+/* ========================================= */
+.header {
+    background-color: var(--cor-fundo-form);
+    color: var(--cor-texto-principal);
+    /* Remova o padding vertical aqui ou defina um valor menor se quiser */
+    padding: 10px 0; /* Ajuste para um padding menor, se desejar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* Adicione uma altura mínima para controlar o tamanho base da barra */
+    min-height: 60px; /* Exemplo: 60px. Ajuste conforme a altura desejada da barra */
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Mantém os itens centralizados verticalmente */
+    height: 100%; /* Garante que o container ocupe a altura total do header */
+}
+
+.header .logo {
+    font-size: 1.8em;
+    color: var(--cor-primaria);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    /* Remova qualquer padding ou margin que possa empurrar o header */
+    margin: 0; 
+    padding: 0;
+}
+
+
+.header .logo-img {
+    height: 200px; /* Defina o tamanho da sua logo aqui (ex: 40px, 50px, etc.) */
+    /* Use max-height para garantir que ela não ultrapasse a altura do header */
+    max-height: 10%; /* A logo não será maior que a altura do pai (o .header) */
+    margin-left: 10px;
+    vertical-align: middle; /* Ajuda a alinhar a imagem com o texto */
+}
+
+/* O restante do CSS do header, nav-menu e hamburger-menu permanece o mesmo */
+.header .nav-menu ul {
+    display: flex;
+}
+
+.header .nav-menu ul li {
+    margin-left: 25px;
+}
+
+.header .nav-menu ul li a {
+    color: var(--cor-texto-principal);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.header .nav-menu ul li a:hover {
+    color: var(--cor-primaria);
+    text-decoration: none;
+}
+
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 1001;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--cor-texto-principal);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+
+/* ========================================= */
+/* Main Content - Hero Section */
+/* ========================================= */
+.hero-section {
+    height: 60vh; /* Altura da seção de destaque */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--cor-texto-claro); /* Texto claro sobre o fundo escuro */
+    background-size: cover; /* Cobre toda a área */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Não repete a imagem */
+    /* Imagem de fundo 1 (globo com mãos) - AJUSTE AQUI */
+    background-image: url('../Imagens/dowload(1).jpg'); /* Caminho para sua imagem ajustado */
+    position: relative; /* Para posicionar o overlay */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay semi-transparente escuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.hero-section h2 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0 10px; /* Espaçamento entre os botões */
+}
+
+.btn-primary {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    border: 2px solid var(--cor-primaria);
+}
+
+.btn-primary:hover {
+    background-color: #45a049; /* Um pouco mais escuro que a cor primária */
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--cor-texto-claro);
+    border: 2px solid var(--cor-texto-claro); /* Borda branca para o botão secundário */
+}
+
+.btn-secondary:hover {
+    background-color: var(--cor-texto-claro); /* Fundo branco no hover */
+    color: var(--cor-primaria); /* Texto primário no hover */
+    text-decoration: none;
+}
+
+
+/* ========================================= */
+/* Main Content - About Section */
+/* ========================================= */
+.about-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.about-section h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: var(--cor-primaria);
+}
+
+.about-section p {
+    margin-bottom: 15px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ========================================= */
+/* Footer */
+/* ========================================= */
+.footer {
+    background-color: var(--cor-primaria); /* Fundo do rodapé com a cor primária */
+    color: var(--cor-texto-claro); /* Texto branco no rodapé */
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px; /* Espaço acima do rodapé */
+}
+
+.footer p {
+    font-size: 0.9em;
+}
