@@ -465,3 +465,38 @@ ul {
         padding: 20px;
     }
 }
+/* --- Mensagens de Notificação (Sucesso/Erro) --- */
+.message-container {
+    text-align: center;
+    margin-top: -20px; /* Ajusta para ficar mais próximo do formulário */
+    margin-bottom: 20px; /* Espaço para o formulário */
+    min-height: 30px; /* Garante uma altura mínima para a mensagem */
+}
+
+.message {
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block; /* Para centralizar e não ocupar 100% da largura */
+    max-width: 500px;
+    opacity: 0; /* Começa invisível */
+    transform: translateY(-10px); /* Começa ligeiramente acima */
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.message.show {
+    opacity: 1; /* Torna visível */
+    transform: translateY(0); /* Desliza para a posição normal */
+}
+
+.message.success {
+    background-color: #D4EDDA; /* Fundo verde claro */
+    color: #155724; /* Texto verde escuro */
+    border: 1px solid #C3E6CB;
+}
+
+.message.error {
+    background-color: #F8D7DA; /* Fundo vermelho claro */
+    color: #721C24; /* Texto vermelho escuro */
+    border: 1px solid #F5C6CB;
+}

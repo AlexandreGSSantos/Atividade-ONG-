@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const enderecoBairroInput = document.getElementById('enderecoBairro');
     const enderecoCidadeInput = document.getElementById('enderecoCidade');
     const enderecoEstadoInput = document.getElementById('enderecoEstado');
+    const formMessageContainer = document.getElementById('formMessageContainer'); // NOVO: Elemento para mensagens
 
     // Função para limpar os campos de endereço
     const limparEndereco = () => {
@@ -23,11 +24,42 @@ document.addEventListener('DOMContentLoaded', () => {
             enderecoBairroInput.value = data.bairro;
             enderecoCidadeInput.value = data.localidade;
             enderecoEstadoInput.value = data.uf;
+            // Remover mensagem de erro de CEP inválido se houver
+            hideMessage(); // Esconde qualquer mensagem anterior
         } else {
             limparEndereco();
-            alert("CEP não encontrado.");
+            showMessage('error', 'CEP não encontrado. Por favor, verifique.'); // Mensagem de erro
         }
     };
+
+    // NOVO: Função para exibir mensagens
+    const showMessage = (type, message) => {
+        formMessageContainer.innerHTML = `<div class="message ${type}">${message}</div>`;
+        const messageElement = formMessageContainer.querySelector('.message');
+        setTimeout(() => {
+            messageElement.classList.add('show');
+        }, 10); // Pequeno atraso para a transição funcionar
+
+        // Opcional: esconder a mensagem após alguns segundos
+        setTimeout(() => {
+            hideMessage();
+        }, 5000); // Mensagem some após 5 segundos
+    };
+
+    // NOVO: Função para esconder mensagens
+    const hideMessage = () => {
+        const messageElement = formMessageContainer.querySelector('.message');
+        if (messageElement) {
+            messageElement.classList.remove('show');
+            // Remove o elemento após a transição para limpar o DOM
+            messageElement.addEventListener('transitionend', () => {
+                if (messageElement.parentNode) {
+                    messageElement.parentNode.removeChild(messageElement);
+                }
+            }, { once: true });
+        }
+    };
+
 
     // Event listener para o campo CEP
     cepInput.addEventListener('blur', () => {
@@ -36,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const validaCep = /^[0-9]{8}$/; // Expressão regular para validar o CEP
 
             if(validaCep.test(cep)) {
+                hideMessage(); // Esconde qualquer mensagem anterior ao tentar buscar
                 // Preenche os campos com "..." enquanto consulta
                 enderecoRuaInput.value = "...";
                 enderecoBairroInput.value = "...";
@@ -48,20 +81,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     .catch(error => {
                         console.error('Erro ao buscar CEP:', error);
                         limparEndereco();
-                        alert("Erro ao buscar o CEP. Tente novamente.");
+                        showMessage('error', 'Erro ao buscar o CEP. Tente novamente.'); // Mensagem de erro
                     });
             } else {
                 limparEndereco();
-                alert("Formato de CEP inválido.");
+                showMessage('error', 'Formato de CEP inválido. Use 8 dígitos numéricos.'); // Mensagem de erro
             }
         } else {
             limparEndereco(); // Limpa se o CEP estiver vazio
+            hideMessage(); // Esconde a mensagem se o campo ficar vazio
         }
     });
 
     // Event listener para o submit do formulário
     form.addEventListener('submit', (event) => {
         event.preventDefault(); // Impede o envio padrão do formulário
+        hideMessage(); // Esconde qualquer mensagem anterior ao tentar submeter
 
         // Coletar os dados do formulário
         const necessidade = {
@@ -80,18 +115,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Validação simples dos campos obrigatórios (além do 'required' do HTML)
         if (!necessidade.nomeInstituicao || !necessidade.tipoAjuda || !necessidade.tituloNecessidade || !necessidade.descricaoDetalhada || !necessidade.cep || !necessidade.contato) {
-            alert('Por favor, preencha todos os campos obrigatórios (*).');
+            showMessage('error', 'Por favor, preencha todos os campos obrigatórios (*).'); // Mensagem de erro
             return; // Impede a continuação se a validação falhar
         }
 
-        // --- NOVA LÓGICA DE SALVAR NO LOCALSTORAGE ---
+        // --- Lógica de Salvar no LOCALSTORAGE ---
         let necessidades = JSON.parse(localStorage.getItem('necessidades')) || [];
         necessidades.push(necessidade);
         localStorage.setItem('necessidades', JSON.stringify(necessidades));
 
-        alert('Necessidade cadastrada com sucesso!');
+        showMessage('success', 'Necessidade cadastrada com sucesso!'); // Mensagem de sucesso
 
         form.reset(); // Limpa o formulário após o cadastro
         limparEndereco(); // Garante que o endereço também seja limpo
+
+        // Opcional: Redirecionar para a página de visualização após um pequeno delay
+        // setTimeout(() => {
+        //     window.location.href = 'visualizar-necessidades.html';
+        // }, 2000);
     });
 });
