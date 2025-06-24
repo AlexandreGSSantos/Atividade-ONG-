@@ -76,8 +76,8 @@ ul {
 
 .header .logo-img {
     height: 50px; /* Ajuste o tamanho da sua logo aqui (ex: 40px, 50px, etc.) */
-    max-height: 100%; /* A logo não será maior que a altura do pai (o .header)
-     margin-left: 10px;
+    max-height: 100%; /* A logo não será maior que a altura do pai (o .header) */
+    margin-left: 10px;
     vertical-align: middle; /* Ajuda a alinhar a imagem com o texto */
 }
 
@@ -303,4 +303,165 @@ ul {
     padding: 15px;
     font-size: 1.1em;
     margin-top: 30px;
+}
+
+/* --- Visualização de Necessidades (visualizar-necessidades.html) --- */
+.necessidades-list-section {
+    padding: 60px 0;
+    background-color: var(--cor-fundo-claro);
+}
+
+.necessidades-list-section h2 {
+    font-size: 2.5em;
+    color: var(--cor-primaria);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.necessidades-list-section p {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+    color: var(--cor-texto-principal);
+}
+
+#necessidades-container {
+    display: grid; /* Usaremos Grid para organizar os cards das necessidades */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Colunas responsivas */
+    gap: 30px; /* Espaçamento entre os cards */
+    max-width: 1200px; /* Largura máxima para o grid de cards */
+    margin: 0 auto; /* Centraliza o grid */
+    padding: 20px;
+}
+
+/* Estilos para o card individual de cada necessidade (será criado pelo JS) */
+.necessidade-card {
+    background-color: var(--cor-fundo-form); /* Branco para o fundo do card */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empurra o botão para baixo */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.necessidade-card:hover {
+    transform: translateY(-5px); /* Efeito de elevação no hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.necessidade-card h3 {
+    font-size: 1.8em;
+    color: var(--cor-primaria);
+    margin-bottom: 10px;
+}
+
+.necessidade-card p {
+    font-size: 0.95em;
+    color: var(--cor-texto-principal);
+    margin-bottom: 10px;
+    text-align: left; /* Alinha o texto da descrição à esquerda */
+}
+
+.necessidade-card .tipo-ajuda {
+    font-weight: bold;
+    color: var(--cor-secundaria);
+    margin-bottom: 5px;
+}
+
+.necessidade-card .instituicao {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.necessidade-card .localizacao {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.necessidade-card .btn-card { /* Novo estilo para botões dentro dos cards */
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    margin-top: 15px;
+    text-align: center;
+    background-color: var(--cor-secundaria); /* Usa a cor secundária */
+    color: var(--cor-texto-claro);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.necessidade-card .btn-card:hover {
+    background-color: #1976D2; /* Um azul um pouco mais escuro */
+}
+
+/* Estilo para a mensagem de "nenhuma necessidade" */
+.no-necessities-message {
+    grid-column: 1 / -1; /* Ocupa todas as colunas do grid */
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--cor-texto-principal);
+    padding: 50px 20px;
+    background-color: var(--cor-fundo-form);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Media Queries (Responsividade) --- */
+@media (max-width: 768px) {
+    .header .nav-menu {
+        display: none; /* Esconde o menu de navegação em telas menores */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Ajuste a altura do seu header */
+        left: 0;
+        width: 100%;
+        background-color: var(--cor-fundo-form);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .header .nav-menu.active {
+        display: flex; /* Mostra o menu quando ativo */
+    }
+
+    .header .nav-menu ul {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .header .nav-menu ul li {
+        margin: 10px 0;
+    }
+
+    .hamburger-menu {
+        display: block; /* Mostra o ícone do hambúrguer */
+    }
+
+    .hero-section h2 {
+        font-size: 2em;
+    }
+
+    .hero-section p {
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+        margin: 5px 0;
+    }
+
+    .form-section h2,
+    .necessidades-list-section h2 {
+        font-size: 2em;
+    }
+
+    #cadastroNecessidadeForm {
+        padding: 20px;
+    }
 }
