@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Necessidade - Ajuda Voluntária</title>
+    <title>Ajuda Voluntária</title>
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js" defer></script>
-    <script src="js/cadastro.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -31,57 +30,28 @@
     </header>
 
     <main class="main-content">
-        <section class="form-section container">
-            <h2>Cadastrar Nova Necessidade</h2>
-            <p>Preencha os campos abaixo para divulgar sua demanda por voluntários ou doações.</p>
+        <section class="hero-section">
+            <div class="hero-overlay">
+                <div class="container">
+                    <h2>Conectando Corações e Causas</h2>
+                    <p>Sua plataforma para encontrar e oferecer ajuda na comunidade local.</p>
+                    <a href="visualizar-necessidades.html" class="btn btn-primary">Ver Necessidades</a>
+                    <a href="cadastrar-necessidade.html" class="btn btn-secondary">Cadastrar Necessidade</a>
+                </div>
+            </div>
+        </section>
 
-            <form id="cadastroNecessidadeForm">
-                <div class="form-group">
-                    <label for="nomeInstituicao">Nome da Instituição <span class="required">*</span></label>
-                    <input type="text" id="nomeInstituicao" name="nomeInstituicao" required>
-                </div>
+        <section class="about-section container">
+            <h3>Sobre a Plataforma</h3>
+            <p>A Ajuda Voluntária surge da necessidade de otimizar a conexão entre instituições sociais e voluntários, tornando o processo de captação de auxílio mais eficiente e transparente. Acreditamos no poder da união para construir uma comunidade mais forte e solidária.</p>
+            <p>Aqui, nossa ONG pode facilmente cadastrar suas demandas por voluntários e doações, enquanto indivíduos engajados podem descobrir e se candidatar a oportunidades que realmente fazem a diferença.</p>
+        </section>
+    </main>
 
-                <div class="form-group">
-                    <label for="tipoAjuda">Tipo de Ajuda <span class="required">*</span></label>
-                    <select id="tipoAjuda" name="tipoAjuda" required>
-                        <option value="">Selecione o tipo de ajuda</option>
-                        <option value="Animais">Ajuda a Animais</option>
-                        <option value="Meio Ambiente">Meio Ambiente (ex: Lixo)</option>
-                        <option value="Saude">Saúde (ex: Dengue/Gripe)</option>
-                        <option value="Educacao">Educação</option>
-                        <option value="Alimentos">Doação de Alimentos</option>
-                        <option value="Roupas">Doação de Roupas</option>
-                        <option value="Outros">Outros</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="tituloNecessidade">Título da Necessidade <span class="required">*</span></label>
-                    <input type="text" id="tituloNecessidade" name="tituloNecessidade" required maxlength="100">
-                </div>
-
-                <div class="form-group">
-                    <label for="descricaoDetalhada">Descrição Detalhada <span class="required">*</span></label>
-                    <textarea id="descricaoDetalhada" name="descricaoDetalhada" rows="6" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="cep">CEP <span class="required">*</span></label>
-                    <input type="text" id="cep" name="cep" maxlength="9" placeholder="Ex: 00000-000" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="enderecoRua">Endereço (Rua)</label>
-                    <input type="text" id="enderecoRua" name="enderecoRua" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="enderecoBairro">Bairro</label>
-                    <input type="text" id="enderecoBairro" name="enderecoBairro" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="enderecoCidade">Cidade</label>
-                    <input type="text" id="enderecoCidade" name="enderecoCidade" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="enderecoEstado">Estado</label>
-                    <input type="text" id="enderecoEstado" name
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Ajuda Voluntária. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
