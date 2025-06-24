@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Coletar os dados do formulário
         const necessidade = {
+            id: Date.now(), // Adiciona um ID único baseado no timestamp
             nomeInstituicao: document.getElementById('nomeInstituicao').value,
             tipoAjuda: document.getElementById('tipoAjuda').value,
             tituloNecessidade: document.getElementById('tituloNecessidade').value,
@@ -83,13 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return; // Impede a continuação se a validação falhar
         }
 
-        // Exemplo: Exibir os dados no console por enquanto
-        console.log('Dados da Necessidade Cadastrada:', necessidade);
-        alert('Necessidade cadastrada com sucesso (dados exibidos no console)!');
+        // --- NOVA LÓGICA DE SALVAR NO LOCALSTORAGE ---
+        let necessidades = JSON.parse(localStorage.getItem('necessidades')) || [];
+        necessidades.push(necessidade);
+        localStorage.setItem('necessidades', JSON.stringify(necessidades));
 
-        // TODO: Em um passo futuro, aqui você salvará os dados (localStorage ou API)
+        alert('Necessidade cadastrada com sucesso!');
 
-        form.reset(); // Limpa o formulário após o "cadastro"
+        form.reset(); // Limpa o formulário após o cadastro
         limparEndereco(); // Garante que o endereço também seja limpo
     });
 });
