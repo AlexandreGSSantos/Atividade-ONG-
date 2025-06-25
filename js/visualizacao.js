@@ -7,18 +7,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
     const closeModalBtn = document.querySelector('.close-button');
 
+    // NOVO: Elementos de filtro
+    const searchKeywordInput = document.getElementById('searchKeyword');
+    const filterTipoAjudaSelect = document.getElementById('filterTipoAjuda');
+    const filterCidadeInput = document.getElementById('filterCidade');
+    const applyFiltersBtn = document.getElementById('applyFiltersBtn');
+    const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+
     let idNecessidadeParaExcluir = null;
 
-    // Função para exibir as necessidades
-    const exibirNecessidades = () => {
-        let necessidades = JSON.parse(localStorage.getItem('necessidades')) || [];
+    // Função para exibir as necessidades (AGORA RECEBE UMA LISTA OPCIONAL)
+    const exibirNecessidades = (necessidadesParaExibir = null) => {
+        let necessidades = necessidadesParaExibir || JSON.parse(localStorage.getItem('necessidades')) || [];
 
         necessidadesContainer.innerHTML = ''; 
 
         if (necessidades.length === 0) {
             necessidadesContainer.innerHTML = `
-                <p class="no-necessities-message">Nenhuma necessidade cadastrada ainda. Seja o primeiro a ajudar!</p>
+                <p class="no-necessities-message">Nenhuma necessidade encontrada com os filtros aplicados.</p>
             `;
+            // Se não houver necessidades, mas o filtro for o padrão, mostra a mensagem original
+            if (!necessidadesParaExibir && !searchKeywordInput.value && filterTipoAjudaSelect.value === "" && !filterCidadeInput.value) {
+                 necessidadesContainer.innerHTML = `
+                    <p class="no-necessities-message">Nenhuma necessidade cadastrada ainda. Seja o primeiro a ajudar!</p>
+                `;
+            }
         } else {
             necessidades.forEach(necessidade => {
                 const card = document.createElement('div');
@@ -42,13 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.btn-excluir').forEach(button => {
                 button.addEventListener('click', (event) => {
                     idNecessidadeParaExcluir = parseInt(event.target.dataset.id);
-                    confirmDeleteModal.classList.add('active'); // Exibe o modal
+                    confirmDeleteModal.classList.add('active'); 
                 });
             });
         }
     };
 
-    // Função para excluir uma necessidade (chamada após a confirmação do modal)
+    // Função para excluir uma necessidade
     const excluirNecessidade = (id) => {
         let necessidades = JSON.parse(localStorage.getItem('necessidades')) || [];
         
@@ -56,37 +69,86 @@ document.addEventListener('DOMContentLoaded', () => {
         
         localStorage.setItem('necessidades', JSON.stringify(necessidades));
         
-        exibirNecessidades(); // Reexibe as necessidades para atualizar a tela
-        alert('Necessidade excluída com sucesso!'); // Feedback ao usuário
+        // Chama exibirNecessidades() sem argumentos para recarregar todas as necessidades
+        // ou com os filtros atuais aplicados se houver.
+        aplicarFiltros(); 
+        alert('Necessidade excluída com sucesso!');
     };
 
-    // Event listeners para o modal de confirmação
+    // NOVO: Função para aplicar os filtros
+    const aplicarFiltros = () => {
+        const todasNecessidades = JSON.parse(localStorage.getItem('necessidades')) || [];
+        let necessidadesFiltradas = todasNecessidades;
+
+        const keyword = searchKeywordInput.value.toLowerCase().trim();
+        const tipoAjuda = filterTipoAjudaSelect.value;
+        const cidade = filterCidadeInput.value.toLowerCase().trim();
+
+        if (keyword) {
+            necessidadesFiltradas = necessidadesFiltradas.filter(necessidade => 
+                necessidade.tituloNecessidade.toLowerCase().includes(keyword) ||
+                necessidade.descricaoDetalhada.toLowerCase().includes(keyword)
+            );
+        }
+
+        if (tipoAjuda) {
+            necessidadesFiltradas = necessidadesFiltradas.filter(necessidade => 
+                necessidade.tipoAjuda === tipoAjuda
+            );
+        }
+
+        if (cidade) {
+            necessidadesFiltradas = necessidadesFiltradas.filter(necessidade => 
+                necessidade.enderecoCidade.toLowerCase().includes(cidade)
+            );
+        }
+
+        exibirNecessidades(necessidadesFiltradas); // Exibe apenas as necessidades filtradas
+    };
+
+    // NOVO: Função para limpar os filtros
+    const limparFiltros = () => {
+        searchKeywordInput.value = '';
+        filterTipoAjudaSelect.value = ''; // Reseta para a opção padrão
+        filterCidadeInput.value = '';
+        exibirNecessidades(); // Reexibe todas as necessidades
+    };
+
+    // Event listeners para o modal de confirmação (sem alterações aqui)
     confirmDeleteBtn.addEventListener('click', () => {
         if (idNecessidadeParaExcluir !== null) {
             excluirNecessidade(idNecessidadeParaExcluir);
-            idNecessidadeParaExcluir = null; // Reseta a variável
+            idNecessidadeParaExcluir = null;
         }
-        confirmDeleteModal.classList.remove('active'); // Esconde o modal
+        confirmDeleteModal.classList.remove('active'); 
     });
 
     cancelDeleteBtn.addEventListener('click', () => {
-        idNecessidadeParaExcluir = null; // Reseta a variável
-        confirmDeleteModal.classList.remove('active'); // Esconde o modal
+        idNecessidadeParaExcluir = null; 
+        confirmDeleteModal.classList.remove('active'); 
     });
 
     closeModalBtn.addEventListener('click', () => {
-        idNecessidadeParaExcluir = null; // Reseta a variável
-        confirmDeleteModal.classList.remove('active'); // Esconde o modal
+        idNecessidadeParaExcluir = null; 
+        confirmDeleteModal.classList.remove('active'); 
     });
 
-    // Fechar o modal clicando fora dele
     window.addEventListener('click', (event) => {
         if (event.target == confirmDeleteModal) {
-            idNecessidadeParaExcluir = null; // Reseta a variável
+            idNecessidadeParaExcluir = null; 
             confirmDeleteModal.classList.remove('active');
         }
     });
 
-    // Chama a função para exibir as necessidades quando a página é carregada
-    exibirNecessidades();
+    // NOVO: Event listeners para os botões de filtro
+    applyFiltersBtn.addEventListener('click', aplicarFiltros);
+    clearFiltersBtn.addEventListener('click', limparFiltros);
+
+    // Opcional: Aplicar filtros ao digitar/selecionar (melhora a UX, mas pode ser mais custoso)
+    searchKeywordInput.addEventListener('input', aplicarFiltros); // Filtra em tempo real
+    filterTipoAjudaSelect.addEventListener('change', aplicarFiltros); // Filtra ao mudar o tipo
+    filterCidadeInput.addEventListener('input', aplicarFiltros); // Filtra em tempo real
+
+    // Chama a função para exibir as necessidades quando a página é carregada (AGORA COM OS FILTROS INICIAIS)
+    aplicarFiltros(); // Chama aplicarFiltros para carregar as necessidades (e aplicar filtros vazios inicialmente)
 });
