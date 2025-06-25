@@ -22,10 +22,6 @@ Uma instituição social (ONG) dedicada a diversas causas na comunidade tem enfr
     * Navegação intuitiva e responsiva com **menu hambúrguer** para dispositivos móveis, garantindo boa usabilidade em diferentes tamanhos de tela.
 * **Acessibilidade Básica:** Utiliza semântica HTML para melhorar a acessibilidade.
 
-# Ajuda Voluntária
-
-Este projeto é uma plataforma simples desenvolvida em HTML, CSS e JavaScript puro para conectar instituições e pessoas que precisam de ajuda (necessidades) com voluntários ou doadores. Ele conta com um layout responsivo, interatividade e boas práticas de acessibilidade.
-
 ## 📂 Estrutura de Arquivos
 
 ATIVIDADE-ONG-/
