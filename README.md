@@ -24,26 +24,28 @@ Uma instituição social (ONG) dedicada a diversas causas na comunidade tem enfr
 
 ## 📂 Estrutura de Arquivos
 
-ATIVIDADE-ONG-/
+seu_projeto/
 ├── css/
-│   └── main.css            # Estilos CSS principais e de responsividade do projeto
+│   └── main.css
+├── html/
+│   ├── cadastrar-necessidade.html
+│   ├── index.html
+│   └── visualizar-necessidades.html
 ├── Imagens/
-│   ├── download(1).jpg     # Imagem de fundo da Hero Section
-│   ├── download(2).jpg     # (Outras imagens se houverem)
-│   └── Logo-ONG.png        # Logo da ONG
+│   ├── download (1).jpg
+│   ├── download (2).jpg
+│   └── Logo-ONG.png
 ├── js/
-│   ├── cadastro.js         # Lógica JavaScript para o formulário de cadastro
-│   ├── main.js             # Lógica JavaScript geral (ex: menu hambúrguer)
-│   └── visualizacao.js     # Lógica JavaScript para exibir e gerenciar necessidades
-├── index.html              # Página inicial
-├── cadastrar-necessidade.html # Página de cadastro de novas necessidades
-├── visualizar-necessidades.html # Página para ver e gerenciar necessidades cadastradas
-└── README.md               # Este arquivo
+│   ├── cadastro.js
+│   ├── main.js
+│   └── visualizacao.js
+└── README.md
+
 ## 🚀 Como Executar
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/AlexandreGSSantos/Atividade-ONG-.git](https://alexandregssantos.github.io/Atividade-ONG-/) # 
+    git clone [https://github.com/AlexandreGSSantos/Atividade-ONG-.git] (https://alexandregssantos.github.io/Atividade-ONG-/) # 
     cd ATIVIDADE-ONG-
     ```
 2.  **Abra os arquivos no navegador:**
@@ -61,7 +63,8 @@ ATIVIDADE-ONG-/
 * VS Code (editor de código)
 * Git e GitHub (controle de versão e hospedagem do repositório)
 * GitHub Pages (para hospedagem, se aplicável)
+* Google Gemini (Para comentários durante o código)
 
 ## 🧑‍💻 Autor
 
-* Alexandre G S Santos
+* Alexandre G. S. Santos
