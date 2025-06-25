@@ -6,16 +6,16 @@
 }
 
 body {
-    font-family: Arial, sans-serif; /* Fonte padrão conforme solicitado */
+    font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: var(--cor-fundo-claro); /* Usando a variável de cor */
-    color: var(--cor-texto-principal); /* Usando a variável de cor */
+    background-color: var(--cor-fundo-claro);
+    color: var(--cor-texto-principal);
 }
 
 /* Remover sublinhado de links e definir cor */
 a {
     text-decoration: none;
-    color: var(--cor-secundaria); /* Links com a cor secundária */
+    color: var(--cor-secundaria);
 }
 
 a:hover {
@@ -23,45 +23,45 @@ a:hover {
 }
 
 ul {
-    list-style: none; /* Remover marcadores de lista */
+    list-style: none;
 }
 
 /* --- Variáveis de Cores (CSS Custom Properties) --- */
 :root {
-    --cor-fundo-claro: #FDFDFD; /* Quase branco, para o fundo geral */
-    --cor-texto-principal: #333333; /* Cinza escuro para texto */
-    --cor-primaria: #4CAF50; /* Verde Esperança (para cabeçalhos, botões principais) */
-    --cor-secundaria: #2196F3; /* Azul Confiança (para links, elementos de destaque) */
-    --cor-fundo-form: #FFFFFF; /* Branco puro, mais claro que o fundo geral, para formulários */
-    --cor-borda: #CCCCCC; /* Cinza claro para bordas e divisores */
-    --cor-texto-claro: #FFFFFF; /* Texto para fundos escuros */
+    --cor-fundo-claro: #FDFDFD;
+    --cor-texto-principal: #333333;
+    --cor-primaria: #4CAF50;
+    --cor-secundaria: #2196F3;
+    --cor-fundo-form: #FFFFFF;
+    --cor-borda: #CCCCCC;
+    --cor-texto-claro: #FFFFFF;
 }
 
 
 /* --- Estilos Gerais de Layout --- */
 .container {
-    max-width: 1100px; /* Largura máxima do conteúdo */
-    margin: 0 auto; /* Centraliza o container na tela */
-    padding: 0 20px; /* Padding nas laterais para telas menores */
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* --- Header (com ajuste para a logo) --- */
 .header {
     background-color: var(--cor-fundo-form);
     color: var(--cor-texto-principal);
-    padding: 10px 0; /* Ajuste para um padding menor, se desejar */
+    padding: 10px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
-    min-height: 60px; /* Exemplo: 60px. Ajuste conforme a altura desejada da barra */
+    min-height: 60px;
 }
 
 .header .container {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Mantém os itens centralizados verticalmente */
-    height: 100%; /* Garante que o container ocupe a altura total do header */
+    align-items: center;
+    height: 100%;
 }
 
 .header .logo {
@@ -75,13 +75,12 @@ ul {
 }
 
 .header .logo-img {
-    height: 50px; /* Ajuste o tamanho da sua logo aqui (ex: 40px, 50px, etc.) */
-    max-height: 100%; /* A logo não será maior que a altura do pai (o .header) */
+    height: 50px;
+    max-height: 100%;
     margin-left: 10px;
-    vertical-align: middle; /* Ajuda a alinhar a imagem com o texto */
+    vertical-align: middle;
 }
 
-/* O restante do CSS do header, nav-menu e hamburger-menu permanece o mesmo */
 .header .nav-menu ul {
     display: flex;
 }
@@ -123,18 +122,17 @@ ul {
 
 /* --- Main Content - Hero Section --- */
 .hero-section {
-    height: 60vh; /* Altura da seção de destaque */
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: var(--cor-texto-claro); /* Texto claro sobre o fundo escuro */
-    background-size: cover; /* Cobre toda a área */
-    background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Não repete a imagem */
-    /* Imagem de fundo 1 (globo com mãos) - AJUSTE AQUI */
-    background-image: url('../Imagens/dowload(1).jpg'); /* Caminho para sua imagem ajustado */
-    position: relative; /* Para posicionar o overlay */
+    color: var(--cor-texto-claro);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../Imagens/dowload(1).jpg');
+    position: relative;
 }
 
 .hero-overlay {
@@ -143,7 +141,7 @@ ul {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Overlay semi-transparente escuro */
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -168,7 +166,7 @@ ul {
     font-weight: bold;
     text-transform: uppercase;
     transition: background-color 0.3s ease, color 0.3s ease;
-    margin: 0 10px; /* Espaçamento entre os botões */
+    margin: 0 10px;
 }
 
 .btn-primary {
@@ -178,19 +176,19 @@ ul {
 }
 
 .btn-primary:hover {
-    background-color: #45a049; /* Um pouco mais escuro que a cor primária */
+    background-color: #45a049;
     text-decoration: none;
 }
 
 .btn-secondary {
     background-color: transparent;
     color: var(--cor-texto-claro);
-    border: 2px solid var(--cor-texto-claro); /* Borda branca para o botão secundário */
+    border: 2px solid var(--cor-texto-claro);
 }
 
 .btn-secondary:hover {
-    background-color: var(--cor-texto-claro); /* Fundo branco no hover */
-    color: var(--cor-primaria); /* Texto primário no hover */
+    background-color: var(--cor-texto-claro);
+    color: var(--cor-primaria);
     text-decoration: none;
 }
 
@@ -217,11 +215,11 @@ ul {
 
 /* --- Footer --- */
 .footer {
-    background-color: var(--cor-primaria); /* Fundo do rodapé com a cor primária */
-    color: var(--cor-texto-claro); /* Texto branco no rodapé */
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
     text-align: center;
     padding: 20px 0;
-    margin-top: 50px; /* Espaço acima do rodapé */
+    margin-top: 50px;
 }
 
 .footer p {
@@ -253,8 +251,8 @@ ul {
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 700px; /* Limita a largura do formulário */
-    margin: 0 auto; /* Centraliza o formulário */
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .form-group {
@@ -262,7 +260,7 @@ ul {
 }
 
 .form-group label {
-    display: block; /* Cada label em uma nova linha */
+    display: block;
     font-weight: bold;
     margin-bottom: 8px;
     color: var(--cor-texto-principal);
@@ -271,34 +269,34 @@ ul {
 .form-group input[type="text"],
 .form-group textarea,
 .form-group select {
-    width: 100%; /* Ocupa toda a largura disponível */
+    width: 100%;
     padding: 12px;
     border: 1px solid var(--cor-borda);
     border-radius: 4px;
     font-size: 1em;
-    box-sizing: border-box; /* Inclui padding e borda na largura total */
+    box-sizing: border-box;
     transition: border-color 0.3s ease;
 }
 
 .form-group input[type="text"]:focus,
 .form-group textarea:focus,
 .form-group select:focus {
-    border-color: var(--cor-secundaria); /* Borda azul ao focar */
-    outline: none; /* Remove o outline padrão do navegador */
+    border-color: var(--cor-secundaria);
+    outline: none;
 }
 
 .form-group textarea {
-    resize: vertical; /* Permite redimensionar apenas verticalmente */
+    resize: vertical;
 }
 
 .form-group .required {
-    color: #FF0000; /* Vermelho para o asterisco de campo obrigatório */
+    color: #FF0000;
     font-size: 0.9em;
     margin-left: 5px;
 }
 
 #cadastroNecessidadeForm .btn-primary {
-    display: block; /* Botão ocupa a largura total */
+    display: block;
     width: 100%;
     padding: 15px;
     font-size: 1.1em;
@@ -326,28 +324,28 @@ ul {
 }
 
 #necessidades-container {
-    display: grid; /* Usaremos Grid para organizar os cards das necessidades */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Colunas responsivas */
-    gap: 30px; /* Espaçamento entre os cards */
-    max-width: 1200px; /* Largura máxima para o grid de cards */
-    margin: 0 auto; /* Centraliza o grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
 }
 
 /* Estilos para o card individual de cada necessidade (será criado pelo JS) */
 .necessidade-card {
-    background-color: var(--cor-fundo-form); /* Branco para o fundo do card */
+    background-color: var(--cor-fundo-form);
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Empurra o botão para baixo */
+    justify-content: space-between;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .necessidade-card:hover {
-    transform: translateY(-5px); /* Efeito de elevação no hover */
+    transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -361,7 +359,7 @@ ul {
     font-size: 0.95em;
     color: var(--cor-texto-principal);
     margin-bottom: 10px;
-    text-align: left; /* Alinha o texto da descrição à esquerda */
+    text-align: left;
 }
 
 .necessidade-card .tipo-ajuda {
@@ -382,13 +380,13 @@ ul {
     margin-bottom: 15px;
 }
 
-.necessidade-card .btn-card { /* Novo estilo para botões dentro dos cards */
+.necessidade-card .btn-card {
     display: block;
     width: 100%;
     padding: 10px 15px;
     margin-top: 15px;
     text-align: center;
-    background-color: var(--cor-secundaria); /* Usa a cor secundária */
+    background-color: var(--cor-secundaria);
     color: var(--cor-texto-claro);
     border: none;
     border-radius: 5px;
@@ -397,12 +395,12 @@ ul {
 }
 
 .necessidade-card .btn-card:hover {
-    background-color: #1976D2; /* Um azul um pouco mais escuro */
+    background-color: #1976D2;
 }
 
 /* Estilo para a mensagem de "nenhuma necessidade" */
 .no-necessities-message {
-    grid-column: 1 / -1; /* Ocupa todas as colunas do grid */
+    grid-column: 1 / -1;
     text-align: center;
     font-size: 1.2em;
     color: var(--cor-texto-principal);
@@ -412,13 +410,137 @@ ul {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
+/* --- Mensagens de Notificação (Sucesso/Erro) --- */
+.message-container {
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    min-height: 30px;
+}
+
+.message {
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    max-width: 500px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.message.success {
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solid #C3E6CB;
+}
+
+.message.error {
+    background-color: #F8D7DA;
+    color: #721C24;
+    border: 1px solid #F5C6CB;
+}
+
+/* --- Modal de Confirmação --- */
+.modal {
+    display: none; /* <--- ESTA DEVE SER A REGRA PADRÃO */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    /* Remova display: flex; daqui. Ele será adicionado apenas pela classe .active */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.modal.active {
+    display: flex; /* <--- ESTA REGRA DEVE SOBREPOR O display: none; */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--cor-fundo-form); /* Fundo branco */
+    margin: auto; /* Centraliza */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%; /* Largura padrão */
+    max-width: 500px; /* Largura máxima */
+    position: relative; /* Para o botão de fechar */
+    text-align: center;
+    transform: translateY(-20px); /* Efeito de entrada */
+    opacity: 0;
+    animation: fadeInModal 0.3s forwards;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content h2 {
+    color: var(--cor-primaria);
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+.modal-content p {
+    margin-bottom: 25px;
+    color: var(--cor-texto-principal);
+    font-size: 1.1em;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaçamento entre os botões */
+}
+
+.modal-buttons .btn {
+    min-width: 120px;
+    padding: 10px 20px;
+}
+
 /* --- Media Queries (Responsividade) --- */
 @media (max-width: 768px) {
     .header .nav-menu {
-        display: none; /* Esconde o menu de navegação em telas menores */
+        display: none;
         flex-direction: column;
         position: absolute;
-        top: 60px; /* Ajuste a altura do seu header */
+        top: 60px;
         left: 0;
         width: 100%;
         background-color: var(--cor-fundo-form);
@@ -426,7 +548,7 @@ ul {
     }
 
     .header .nav-menu.active {
-        display: flex; /* Mostra o menu quando ativo */
+        display: flex;
     }
 
     .header .nav-menu ul {
@@ -439,7 +561,7 @@ ul {
     }
 
     .hamburger-menu {
-        display: block; /* Mostra o ícone do hambúrguer */
+        display: block;
     }
 
     .hero-section h2 {
@@ -464,39 +586,4 @@ ul {
     #cadastroNecessidadeForm {
         padding: 20px;
     }
-}
-/* --- Mensagens de Notificação (Sucesso/Erro) --- */
-.message-container {
-    text-align: center;
-    margin-top: -20px; /* Ajusta para ficar mais próximo do formulário */
-    margin-bottom: 20px; /* Espaço para o formulário */
-    min-height: 30px; /* Garante uma altura mínima para a mensagem */
-}
-
-.message {
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    display: inline-block; /* Para centralizar e não ocupar 100% da largura */
-    max-width: 500px;
-    opacity: 0; /* Começa invisível */
-    transform: translateY(-10px); /* Começa ligeiramente acima */
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-}
-
-.message.show {
-    opacity: 1; /* Torna visível */
-    transform: translateY(0); /* Desliza para a posição normal */
-}
-
-.message.success {
-    background-color: #D4EDDA; /* Fundo verde claro */
-    color: #155724; /* Texto verde escuro */
-    border: 1px solid #C3E6CB;
-}
-
-.message.error {
-    background-color: #F8D7DA; /* Fundo vermelho claro */
-    color: #721C24; /* Texto vermelho escuro */
-    border: 1px solid #F5C6CB;
 }
