@@ -30,11 +30,30 @@
         </div>
     </header>
 
-    <main class="main-content">
+   <main class="main-content">
         <section class="necessidades-list-section container">
             <h2>Necessidades Cadastradas</h2>
             <p>Confira as demandas por ajuda e voluntariado em nossa comunidade.</p>
 
+            <div class="filters-container">
+                <input type="text" id="searchKeyword" placeholder="Buscar por título ou descrição..." class="filter-input">
+                <select id="filterTipoAjuda" class="filter-select">
+                    <option value="">Filtrar por Tipo de Ajuda</option>
+                    <option value="Alimentos">Alimentos</option>
+                    <option value="Roupas">Roupas</option>
+                    <option value="Higiene">Higiene</option>
+                    <option value="Limpeza">Limpeza</option>
+                    <option value="Saúde">Saúde</option>
+                    <option value="Educação">Educação</option>
+                    <option value="Moradia">Moradia</option>
+                    <option value="Meio Ambiente">Meio Ambiente</option>
+                    <option value="Trabalho">Trabalho</option>
+                    <option value="Outro">Outro</option>
+                </select>
+                <input type="text" id="filterCidade" placeholder="Filtrar por Cidade..." class="filter-input">
+                <button id="applyFiltersBtn" class="btn btn-primary">Aplicar Filtros</button>
+                <button id="clearFiltersBtn" class="btn btn-secondary">Limpar Filtros</button>
+            </div>
             <div id="necessidades-container">
                 <p class="no-necessities-message">Nenhuma necessidade cadastrada ainda. Seja o primeiro a ajudar!</p>
             </div>

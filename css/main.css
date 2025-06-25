@@ -587,3 +587,76 @@ ul {
         padding: 20px;
     }
 }
+/* --- Filtros e Pesquisa (visualizar-necessidades.html) --- */
+.filters-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
+    gap: 15px; /* Espaçamento entre os elementos do filtro */
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: var(--cor-fundo-form);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filter-input,
+.filter-select {
+    padding: 10px 15px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    font-size: 1em;
+    flex: 1; /* Permite que os campos cresçam e ocupem espaço */
+    min-width: 200px; /* Largura mínima para os campos */
+    max-width: 280px; /* Largura máxima para os campos */
+    transition: border-color 0.3s ease;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+    border-color: var(--cor-secundaria);
+    outline: none;
+}
+
+.filters-container .btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    flex-shrink: 0; /* Impede que os botões encolham */
+}
+
+/* Ajuste para botões de filtro */
+.filters-container .btn-primary {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    border: none;
+}
+
+.filters-container .btn-primary:hover {
+    background-color: #45a049;
+}
+
+.filters-container .btn-secondary {
+    background-color: #f0f0f0; /* Um cinza claro para o botão de limpar */
+    color: var(--cor-texto-principal);
+    border: 1px solid var(--cor-borda);
+}
+
+.filters-container .btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+/* Media Queries para responsividade dos filtros */
+@media (max-width: 768px) {
+    .filters-container {
+        flex-direction: column; /* Coloca os itens em coluna */
+        align-items: stretch; /* Estica os itens para a largura total */
+    }
+
+    .filter-input,
+    .filter-select,
+    .filters-container .btn {
+        width: 100%; /* Ocupa a largura total */
+        max-width: none; /* Remove a largura máxima */
+    }
+}
